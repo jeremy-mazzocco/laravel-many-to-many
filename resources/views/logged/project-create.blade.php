@@ -28,6 +28,7 @@
                 <input type="date" name="date_finished" id="date_finished">
             </div>
 
+
             <div class="my-3">
                 <label for="type_id">Type</label>
                 <select name="type_id" id="type_id">
@@ -44,16 +45,6 @@
                     <label for="technology{{ $technology->id }}">{{ $technology->languages }}</label>
                 </span>
             @endforeach
-
-            {{--
-
-            <input type="checkbox" value="{{ $farm->id }}" name="farms[]" id="farm{{ $farm->id }}">
-            <label class="form-check-label" for="farm{{ $farm->id }}">
-                {{ $farm->location }} ({{ $farm->nation }})
-            </label> --}}
-
-
-
 
             <div>
                 <input class="my-3" type="submit" value="CREATE">

@@ -27,7 +27,15 @@ class LoggedController extends Controller
     }
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->validate([
+            'name' => "required|string|min:3|max:64",
+            'title' => "required|string|min:3|max:64",
+            'collaborators' => "nullable|string|min:3|max:64",
+            'date_finished' => "required|date",
+            'type_id' => "nullable|string",
+
+            'technologies' => "required|array"
+        ]);
 
         $project = Project::create($data);
 

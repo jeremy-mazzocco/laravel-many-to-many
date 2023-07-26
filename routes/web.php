@@ -13,7 +13,9 @@ Route::get('/project/create', [LoggedController::class, 'create'])->name('projec
 Route::post('/project/store', [LoggedController::class, 'store'])->name('project.store');
 
 
-Route::get('/show/{id}', [LoggedController::class, 'index'])->middleware(['auth'])->name('logged.show');
+Route::get('/show/{id}', [LoggedController::class, 'show'])->middleware(['auth'])->name('logged.show');
+
+
 
 
 

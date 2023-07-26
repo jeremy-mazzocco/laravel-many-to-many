@@ -5,16 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
 
 class LoggedController extends Controller
 {
-    public function index($id)
+
+    public function show($id)
     {
+        $project = Project::findOrFail($id);
 
-        $projects = Project::findOrFail($id);
-
-        return view('logged.show', compact('projects'));
+        return view('logged.show', compact('project'));
     }
+
 
     public function create()
     {
@@ -22,13 +24,12 @@ class LoggedController extends Controller
 
         return view('logged.project-create', compact('types'));
     }
-
     public function store(Request $request)
     {
         $data = $request->all();
 
-        $projects = Project::create($data);
+        $project = Project::create($data);
 
-        return redirect()->route('logged.show', $projects->id);
+        return redirect()->route('logged.show', $project->id);
     }
 }

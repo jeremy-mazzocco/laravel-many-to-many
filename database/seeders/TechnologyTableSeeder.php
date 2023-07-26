@@ -20,7 +20,7 @@ class TechnologyTableSeeder extends Seeder
         $technologies = Technology::factory()->count(10)->create();
 
         foreach ($technologies as $technology) {
-            $projects = Project::inRandomOrder()->limit(rand(1, 7))->get();
+            $projects = Project::inRandomOrder()->limit(rand(1, 4))->get();
 
             $technology->projects()->attach($projects);
         }

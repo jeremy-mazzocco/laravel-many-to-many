@@ -6,15 +6,22 @@
         <h1>SHOW PAGE</h1>
         <ul>
             <li>
-                <div><b>Tilte: </b>{{ $projects->title }}</div>
+                <div><b>Tilte: </b>{{ $project->title }}</div>
 
-                <div><b>Name Author: </b>{{ $projects->name }}</div>
+                <div><b>Name Author: </b>{{ $project->name }}</div>
 
-                <div><b>Collaborators: </b>{{ $projects->collaborators }}</div>
+                <div><b>Collaborators: </b>{{ $project->collaborators }}</div>
 
-                <div><b>Finish Date: </b>{{ $projects->date_finished }}</div>
+                <div><b>Finish Date: </b>{{ $project->date_finished }}</div>
 
-                <div><b>Type: </b>{{ $projects->type->stack }}</div>
+                <div><b>Type: </b>{{ $project->type->stack }}</div>
+
+
+                <p>{{ count($project->technologies) }}</p>
+
+                @foreach ($project->technologies as $technology)
+                    <div><b>Languages: </b>{{ $technology->languages }}</div>
+                @endforeach
             </li>
         </ul>
     </div>

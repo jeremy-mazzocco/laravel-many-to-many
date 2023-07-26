@@ -13,7 +13,9 @@
             @foreach ($projects as $project)
                 <a href="{{ route('logged.show', $project->id) }}">
                     <li class="my-3">
-                        <b>Name Project: </b>{{ $project->title }} <br>
+
+                        <b>Name Project: </b>{{ $project->title }}
+
                     </li>
                 </a>
             @endforeach

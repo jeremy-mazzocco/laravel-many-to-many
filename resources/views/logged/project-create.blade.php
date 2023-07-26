@@ -38,14 +38,26 @@
             </div>
 
             @foreach ($technologies as $technology)
-                <div class="my-3">
+                <span class="mx-3">
                     <input type="checkbox" value="{{ $technology->id }}" name="technologies[]"
                         id="technology{{ $technology->id }}">
                     <label for="technology{{ $technology->id }}">{{ $technology->languages }}</label>
-                </div>
+                </span>
             @endforeach
 
-            <input class="my-3" type="submit" value="CREATE">
+            {{--
+
+            <input type="checkbox" value="{{ $farm->id }}" name="farms[]" id="farm{{ $farm->id }}">
+            <label class="form-check-label" for="farm{{ $farm->id }}">
+                {{ $farm->location }} ({{ $farm->nation }})
+            </label> --}}
+
+
+
+
+            <div>
+                <input class="my-3" type="submit" value="CREATE">
+            </div>
         </form>
     </div>
 @endsection

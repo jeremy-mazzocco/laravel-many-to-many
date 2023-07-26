@@ -21,14 +21,17 @@ class LoggedController extends Controller
     public function create()
     {
         $types = Type::all();
+        $technologies = Technology::all();
 
-        return view('logged.project-create', compact('types'));
+        return view('logged.project-create', compact('types', 'technologies'));
     }
     public function store(Request $request)
     {
         $data = $request->all();
 
         $project = Project::create($data);
+
+        dd($project);
 
         return redirect()->route('logged.show', $project->id);
     }

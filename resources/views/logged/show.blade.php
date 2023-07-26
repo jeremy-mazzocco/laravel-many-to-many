@@ -4,7 +4,7 @@
     <div class="container text-center">
 
         <h1>SHOW PAGE</h1>
-        <ul>
+        <ul class="list-unstyled">
             <li>
                 <div><b>Tilte: </b>{{ $project->title }}</div>
 
@@ -16,12 +16,17 @@
 
                 <div><b>Type: </b>{{ $project->type->stack }}</div>
 
-
-                <p>{{ count($project->technologies) }}</p>
-
-                @foreach ($project->technologies as $technology)
-                    <div><b>Languages: </b>{{ $technology->languages }}</div>
-                @endforeach
+                @if (count($project->technologies) > 0)
+                    <div><b>Languages: {{ count($project->technologies) }}</b>
+                        <ul class="list-unstyled">
+                            @foreach ($project->technologies as $technology)
+                                <li>
+                                    {{ $technology->languages }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </li>
         </ul>
     </div>

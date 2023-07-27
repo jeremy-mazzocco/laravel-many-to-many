@@ -39,7 +39,7 @@ class LoggedController extends Controller
 
         $project = Project::create($data);
 
-        $project->technologies()->attach($data['technologies']);
+        $project->technologies()->sync($data['technologies']);
 
         return redirect()->route('logged.show', $project->id);
     }

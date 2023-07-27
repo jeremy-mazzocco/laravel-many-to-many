@@ -15,6 +15,8 @@ class Project extends Model
         'collaborators',
         'date_finished',
 
+        'immage',
+
         'type_id'
     ];
 

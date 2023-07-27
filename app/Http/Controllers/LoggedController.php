@@ -33,6 +33,7 @@ class LoggedController extends Controller
             'collaborators' => "nullable|string|min:3|max:64",
             'date_finished' => "required|date",
             'type_id' => "nullable|string",
+            'immage' => "nullable|file|image",
 
             'technologies' => "required|array"
         ]);

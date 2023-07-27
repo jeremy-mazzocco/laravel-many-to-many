@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('collaborators', 64)->nullable();
             $table->dateTime('date_finished')->nullable();
 
+            $table->string('immage')->nullable();
             $table->timestamps();
         });
     }

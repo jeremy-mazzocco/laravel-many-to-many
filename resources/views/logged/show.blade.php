@@ -4,6 +4,9 @@
     <div class="container text-center">
 
         <h1>SHOW PAGE</h1>
+        <div class="mx-auto">
+            <img src="{{ asset('storage/' . $project->image) }}" alt="none" width="250px" height="250px">
+        </div>
         <ul class="list-unstyled">
             <li>
                 <div><b>Tilte: </b>{{ $project->title }}</div>

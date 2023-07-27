@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 use App\Models\Project;
 use App\Models\Type;
 use App\Models\Technology;
@@ -33,10 +35,13 @@ class LoggedController extends Controller
             'collaborators' => "nullable|string|min:3|max:64",
             'date_finished' => "required|date",
             'type_id' => "nullable|string",
-            'immage' => "nullable|file|image",
+            'image' => "nullable|file|image",
 
             'technologies' => "required|array"
         ]);
+
+        $image_path = Storage::put('uploads', $data['image']);
+        $data['image'] = $image_path;
 
         $project = Project::create($data);
 

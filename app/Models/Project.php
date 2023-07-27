@@ -14,8 +14,7 @@ class Project extends Model
         'title',
         'collaborators',
         'date_finished',
-
-        'immage',
+        'image',
 
         'type_id'
     ];

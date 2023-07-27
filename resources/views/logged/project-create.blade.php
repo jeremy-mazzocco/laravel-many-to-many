@@ -3,10 +3,11 @@
 @section('content')
     <div class="text-center">
         <h1>NEW PROJECT</h1>
-        <form method="POST" action="{{ route('project.store') }}">
+        <form method="POST" action="{{ route('project.store') }}" enctype="multipart/form-data">
 
             @csrf
             @method('POST')
+
 
             <div class="my-3">
                 <label for="name">Author</label>
@@ -45,6 +46,12 @@
                     <label for="technology{{ $technology->id }}">{{ $technology->languages }}</label>
                 </span>
             @endforeach
+
+
+            <div class="my-3">
+                <label for="image">Image path</label>
+                <input type="file" name="image" id="image">
+            </div>
 
             <div>
                 <input class="my-3" type="submit" value="CREATE">

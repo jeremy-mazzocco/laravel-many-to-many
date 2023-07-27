@@ -12,15 +12,10 @@ Route::get('/', [GuestController::class, 'index'])->name('guest.index');
 Route::get('/project/create', [LoggedController::class, 'create'])->name('project.create');
 Route::post('/project/store', [LoggedController::class, 'store'])->name('project.store');
 
+Route::get('/show/{id}', [LoggedController::class, 'show'])->middleware(['auth'])->name('project.show');
 
-Route::get('/show/{id}', [LoggedController::class, 'show'])->middleware(['auth'])->name('logged.show');
-
-
-
-
-
-
-
+Route::get('edit/{id}', [LoggedController::class, 'edit'])->middleware(['auth'])->name('project.edit');
+Route::put('update/{id}', [LoggedController::class, 'update'])->middleware(['auth'])->name('project.update');
 
 
 

@@ -32,5 +32,6 @@
                 @endif
             </li>
         </ul>
+        <a class="btn btn-warning" href="{{ route('project.edit', $project->id) }}">Update</a>
     </div>
 @endsection

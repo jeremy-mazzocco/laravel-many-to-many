@@ -16,7 +16,7 @@ class LoggedController extends Controller
     {
         $project = Project::findOrFail($id);
 
-        return view('logged.show', compact('project'));
+        return view('logged.project-show', compact('project'));
     }
 
 
@@ -29,16 +29,9 @@ class LoggedController extends Controller
     }
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'name' => "required|string|min:3|max:64",
-            'title' => "required|string|min:3|max:64",
-            'collaborators' => "nullable|string|min:3|max:64",
-            'date_finished' => "required|date",
-            'type_id' => "nullable|string",
-            'image' => "nullable|file|image",
-
-            'technologies' => "required|array"
-        ]);
+        $data = $request->validate(
+            $this->getValidate()
+        );
 
         $image_path = Storage::put('uploads', $data['image']);
         $data['image'] = $image_path;
@@ -47,6 +40,47 @@ class LoggedController extends Controller
 
         $project->technologies()->sync($data['technologies']);
 
-        return redirect()->route('logged.show', $project->id);
+        return redirect()->route('project.show', $project->id);
+    }
+
+
+    public function edit($id)
+    {
+        $types = Type::all();
+        $technologies = Technology::all();
+        $project = Project::findOrFail($id);
+
+        return view('logged.project-edit', compact('types', 'technologies', 'project'));
+    }
+    public function update(Request $request, $id)
+    {
+        $data = $request->validate(
+            $this->getValidate()
+        );
+
+        $imge_path = Storage::put('uploads', $data['image']);
+        $data['image'] = $imge_path;
+
+        $project = Project::create($data);
+
+        return redirect()->route('project.show', $project->id);
+    }
+
+
+
+
+
+    // validate function
+    private function getValidate()
+    {
+        return [
+            'name' => "required|string|min:3|max:64",
+            'title' => "required|string|min:3|max:64",
+            'collaborators' => "nullable|string|min:3|max:64",
+            'date_finished' => "required|date",
+            'type_id' => "nullable|string",
+            'image' => "nullable|file|image",
+            'technologies' => "required|array"
+        ];
     }
 }

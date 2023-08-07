@@ -27,6 +27,7 @@ class LoggedController extends Controller
 
         return view('logged.project-create', compact('types', 'technologies'));
     }
+
     public function store(Request $request)
     {
         $data = $request->validate(
@@ -52,6 +53,7 @@ class LoggedController extends Controller
 
         return view('logged.project-edit', compact('types', 'technologies', 'project'));
     }
+
     public function update(Request $request, $id)
     {
         $data = $request->validate(
@@ -66,6 +68,14 @@ class LoggedController extends Controller
         return redirect()->route('project.show', $project->id);
     }
 
+
+    public function delete($id)
+    {
+        $project = Project::findOrFail($id);
+        $project->delete();
+
+        return redirect()->route('guest.index');
+    }
 
 
 

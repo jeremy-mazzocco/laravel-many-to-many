@@ -10,15 +10,15 @@
     </h2>
     <div class="text-center">
         <ul class="list-unstyled">
+
             @foreach ($projects as $project)
                 <a href="{{ route('project.show', $project->id) }}">
                     <li class="my-3">
-
                         <b>Name Project: </b>{{ $project->title }}
-
                     </li>
                 </a>
             @endforeach
+
         </ul>
     </div>
 @endsection

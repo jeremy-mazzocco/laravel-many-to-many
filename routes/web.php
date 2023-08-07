@@ -14,8 +14,10 @@ Route::post('/project/store', [LoggedController::class, 'store'])->name('project
 
 Route::get('/show/{id}', [LoggedController::class, 'show'])->middleware(['auth'])->name('project.show');
 
-Route::get('edit/{id}', [LoggedController::class, 'edit'])->middleware(['auth'])->name('project.edit');
-Route::put('update/{id}', [LoggedController::class, 'update'])->middleware(['auth'])->name('project.update');
+Route::get('/edit/{id}', [LoggedController::class, 'edit'])->middleware(['auth'])->name('project.edit');
+Route::put('/update/{id}', [LoggedController::class, 'update'])->middleware(['auth'])->name('project.update');
+
+// Route::delete('/destroy/{id}', [LoggedController::class, 'delete'])->middleware(['auth'])->name('project.destroy');
 
 
 

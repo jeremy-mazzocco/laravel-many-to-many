@@ -32,6 +32,15 @@
                 @endif
             </li>
         </ul>
+
         <a class="btn btn-warning" href="{{ route('project.edit', $project->id) }}">Update</a>
+
+        {{-- <form class="d-inline" method="POST" action="{{ route('pluto', $project->id) }}">
+
+            @csrf
+            @method('DELETE')
+
+            <input class="btn btn-danger" type="submit" value="DELETE">
+        </form> --}}
     </div>
 @endsection
